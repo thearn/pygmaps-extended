@@ -1,32 +1,16 @@
-#from distutils.core import setup
+from setuptools import setup, Extension
+import numpy as np
 
-__version__ = '0.1.1'
+SRC_DIR = "pygmaps"
+PACKAGES = [SRC_DIR]
 
-
-METADATA = dict(
-    name = 'pygmaps',
-    version = __version__,
-    py_modules = ['pygmaps'],
-    description = 'Python wrapper for Google MAPs javascript API 3.0 ',
-    long_description = '',
-    license='Apache License 2.0',
-    author = 'Yifei Jiang',
-    author_email = 'jiangyifei@gmail.com',
-    url = 'http://code.google.com/p/pygmaps/',
-    keywords='Python wrapper Google Maps',
-
-)
-
-
-SETUPTOOLS_METADATA = dict(
-  include_package_data = True,
-
-)
-
-try:
-    import setuptools
-    METADATA.update(SETUPTOOLS_METADATA)
-    setuptools.setup(**METADATA)
-except ImportError:
-    import distutils.core
-    distutils.core.setup(**METADATA)
+setup(name='pygmaps-enhanced',
+      version='0.2.0',
+      install_requires=['numpy', 'matplotlib'],
+      description="Python wrapper for Google MAPs javascript API 3.0",
+      author='Tristan Hearn',
+      author_email='tristanhearn@gmail.com',
+      url='https://github.com/thearn/pygmaps',
+      license='Apache 2.0',
+      packages=['pygmaps'],
+      )
