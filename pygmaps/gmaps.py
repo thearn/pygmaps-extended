@@ -39,10 +39,12 @@ def val2hex(v, scale=1.0):
 class maps(object):
 
     def __init__(self, centerLat=0, centerLng=0, zoom=7, title="Map",
-                 default_view="SATELLITE"):
+                 default_view="HYBRID", width=100, height=100):
         self.center = (float(centerLat), float(centerLng))
         self.zoom = int(zoom)
         self.title = title
+        self.width = str(int(width))
+        self.height = str(int(height))
         self.grids = None
         self.default_view = default_view
         self.paths = []
@@ -57,15 +59,15 @@ class maps(object):
     def add_point(self, lat, lng, color='#FF0000', title=None):
         self.points.append((lat, lng, color[1:], title))
 
-    def add_weighted_path(self, path, weights):
+    def add_weighted_path(self, path, weights, scale=1):
         """
         Plots a set of colored path segments based on
         locations and weight values.
         """
         mn, mx = float(min(weights)), max(weights)
         n = len(weights)
-        weights = np.array(weights)
-        weights_normed = (weights - mn) / (mx - mn)
+        weights_normed = np.array(weights)
+        #weights_normed = (weights - mn) / (mx - mn)
 
         last_w = weights_normed[0]
         lat1 = (path[0][0] + path[1][0]) / 2.
@@ -92,7 +94,7 @@ class maps(object):
                 newpath.append(path[i])
                 newpath.append([lat2, lon2])
             else:
-                col = val2hex(last_w)
+                col = val2hex(last_w, scale)
                 self.add_path(newpath, "#" + col)
                 newpath = []
                 newpath.append([lat1, lon1])
@@ -101,7 +103,7 @@ class maps(object):
             last_w = weights_normed[i]
 
         if weights_normed[- 1] != last_w:
-            col = val2hex(last_w)
+            col = val2hex(last_w, scale)
             self.add_path(newpath, "#" + col)
             newpath = []
 
@@ -109,7 +111,7 @@ class maps(object):
         lon1 = (path[- 2][1] + path[- 1][1]) / 2.
         newpath.append([lat1, lon1])
         newpath.append(path[-1])
-        col = val2hex(weights_normed[-1])
+        col = val2hex(weights_normed[-1], scale)
         self.add_path(newpath, "#" + col)
 
     def add_rad_point(self, lat, lng, rad, color='#0000FF'):
@@ -160,7 +162,7 @@ class maps(object):
         f.write(
             '<body style="margin:0px; padding:0px;" onload="initialize()">\n')
         f.write(
-            '\t<div id="map_canvas" style="width: 100%; height: 100%;"></div>\n')
+            '\t<div id="map_canvas" style="width: %s%%; height: %s%%;"></div>\n' % (self.width, self.height))
         f.write('</body>\n')
         f.write('</html>\n')
         f.close()
