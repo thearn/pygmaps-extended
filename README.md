@@ -19,4 +19,4 @@ This extension is not backwards compatible with the original pygmaps, as some fu
 `example.py` produces a map based on the design of a 3U CubeSat mission.
 It will plot the trajectory of the satellite over the course of half of a day, one month following its launch. The path of the satellite is colored based on its data transmission rate to the ground station, in Ann Arbor MI.
 
-[Click to see the result](http://rawgithub.com/thearn/pygmaps/master/example.html)
+[Click to see the result](http://dl.dropboxusercontent.com/u/1886126/example.html)
