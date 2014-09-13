@@ -1,5 +1,5 @@
 Pygmaps-extended is a Python wrapper for the Google Maps JavaScript API V3.
-It can be used to generate Google Maps from python as stand-alone HTML files.
+It can be used to generate fully-interactive Google Maps from python as stand-alone HTML files.
 
 This library builds upon the original [Pygmaps](https://code.google.com/p/pygmaps/) by Yifei Jiang. This library also makes use of [google-maps-utility-library-v3](https://code.google.com/p/google-maps-utility-library-v3/) to extend functionality.
 
