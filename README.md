@@ -16,7 +16,7 @@ This extension is not backwards compatible with the original pygmaps, as some fu
 
 ## Advanced example:
 
-`example.py` produces a map based on the design of a [3U CubeSat mission](http://exploration.engin.umich.edu/blog/?page_id=961).
+`example.py` produces a map based on a simulation of the performance of a 3U CubeSat mission.
 It will plot the trajectory of the satellite over the course of half of a day, one month following its launch. The path of the satellite is colored based on its data transmission rate to the ground station, in Ann Arbor MI.
 
-[Click to see the result](http://openmdao-plugins.github.io/CADRE/full.html)
+[Click to see a hosted version of the result](http://openmdao-plugins.github.io/CADRE/full.html)
